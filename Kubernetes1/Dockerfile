@@ -9,10 +9,10 @@ COPY ["Kubernetes1/Kubernetes1.csproj", "Kubernetes1/"]
 RUN dotnet restore "$PROJECT_DIR/Kubernetes1.csproj"
 COPY . .
 WORKDIR "/src/Kubernetes1"
-RUN dotnet build "Kubernetes1.csproj" -c Release -o /app
+RUN dotnet build "Kubernetes1/Kubernetes1.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "Kubernetes1.csproj" -c Release -o /app
+RUN dotnet publish "Kubernetes1/Kubernetes1.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
